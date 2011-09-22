@@ -1,4 +1,3 @@
-
 dnl Those depend on correct order:
 dnl  AC_USUAL_PORT_CHECK
 dnl  AC_USUAL_PROGRAM_CHECK
@@ -55,11 +54,11 @@ if test x"$pgac_cv_funcname_func" = xyes ; then
   AC_DEFINE(HAVE_FUNCNAME__FUNC, 1,
     [Define to 1 if your compiler understands __func__.])
 fi
-dnl Check if linker supports -Wl,--as-needed
+dnl Check if linker supports -Wl,-dead_strip_dylibs
 if test "$GCC" = "yes"; then
   old_LDFLAGS="$LDFLAGS"
-  LDFLAGS="$LDFLAGS -Wl,--as-needed"
-  AC_MSG_CHECKING([whether linker supports --as-needed])
+  LDFLAGS="$LDFLAGS -Wl,-dead_strip_dylibs"
+  AC_MSG_CHECKING([whether linker supports -dead_strip_dylibs])
   AC_LINK_IFELSE([AC_LANG_SOURCE([int main(void) { return 0; }],
     [AC_MSG_RESULT([yes])],
     [AC_MSG_RESULT([no])
